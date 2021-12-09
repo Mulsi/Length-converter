@@ -1,14 +1,14 @@
 
 <div class="layout-row align-items-center justify-content-center mt-50">
 
-  <section class="layout-column align-items-center justify-content-between">
+  <section (ngModel)="lengthOptions" class="layout-column align-items-center justify-content-between">
     <span class="input layout-row">
         <input (input)="firstInput($event.target.value)" [(ngModel)]="this.secondValue" type="number" class="large"
         data-test-id="app-input1"/>
         <label class="suffix" data-test-id="app-label1"></label>
     </span>
-    <select data-test-id="app-select1" [(ngModel)]="converter" (ngModelChange)="converter($event)">
-      <option *ngFor="let option of lengthOptions">{{ option.label }}</option>
+    <select data-test-id="app-select1" (change)="converter($event.target.value, this.input)">
+      <option *ngFor="let option of lengthOptions" [ngValue]="option.label">{{ option.label }}</option>
     </select>
   </section>
 
@@ -20,10 +20,8 @@
           data-test-id="app-input2"/> 
           <label class="suffix" data-test-id="app-label2"></label>
       </span>
-      <select data-test-id="app-select2">
-        <option>Meters</option>
-        <option>Kilometers</option>
-        <option>Centimeters</option>
+      <select data-test-id="app-select2" (change)="converter($event.target.value, this.input)">
+        <option *ngFor="let option of lengthOptions" [ngValue]="option.label">{{ option.label }}</option>
       </select>
     </section>
 </div>

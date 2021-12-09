@@ -11,8 +11,8 @@ export class LengthConverter implements OnInit {
   input: number;
   firstValue: number;
   secondValue: number;
-  selectedOption: boolean[];
-  entryLabel: any;
+  value: number;
+  convertedValue: number;
   lengthOptions = [
     {
       id: 0,
@@ -32,9 +32,6 @@ export class LengthConverter implements OnInit {
   ];
 
   ngOnInit() {
-    this.arr = this.lengthOptions.map((option) => {
-      return option;
-    })
   }
   // onInput(value: number) {
   //   this.input = value;
@@ -56,8 +53,24 @@ export class LengthConverter implements OnInit {
     this.secondValue = value * 0.001;
   }
 
-  converter(event: any) {
-    console.log(event);
+  inputValue() {
+    
+  }
+
+  converter(event: any, input:number) {
+    this.value = input;
+    switch (event) {
+      case "Kilometre" && "Metre":
+        console.log("Km and m was selected");
+
+        break;
+      case "Kilometre" && "Centimetre": 
+        console.log('Km and cm was selected');
+        break;
+      case "Metre" && "Centimetre": 
+        console.log("m and cm was selected");
+        break;
+    }
   }
 
 }
