@@ -3,12 +3,12 @@
 
   <section class="layout-column align-items-center justify-content-between">
     <span class="input layout-row">
-        <input type="number" class="large"
+        <input (input)="firstInput($event.target.value)" [(ngModel)]="this.secondValue" type="number" class="large"
         data-test-id="app-input1"/>
         <label class="suffix" data-test-id="app-label1"></label>
     </span>
-    <select data-test-id="app-select1">
-      <option></option>
+    <select data-test-id="app-select1" [(ngModel)]="converter" (ngModelChange)="converter($event)">
+      <option *ngFor="let option of lengthOptions">{{ option.label }}</option>
     </select>
   </section>
 
@@ -16,12 +16,14 @@
 
   <section class="layout-column align-items-center justify-content-between">
       <span class="input layout-row">
-          <input type="number" class="large"
-          data-test-id="app-input2"/>
+          <input (input)="secondInput($event.target.value)" [(ngModel)]="this.firstValue" type="number" class="large"
+          data-test-id="app-input2"/> 
           <label class="suffix" data-test-id="app-label2"></label>
       </span>
       <select data-test-id="app-select2">
-        <option></option>
+        <option>Meters</option>
+        <option>Kilometers</option>
+        <option>Centimeters</option>
       </select>
     </section>
 </div>

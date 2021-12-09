@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { LengthConverter } from './lengthConverter/lengthConverter.component';
 import { RouterModule } from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
+import { ConverterPipe } from './converter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LengthConverter
+    LengthConverter,
+    ConverterPipe
   ],
   imports: [
     BrowserModule,
